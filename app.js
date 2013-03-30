@@ -4,6 +4,7 @@
  */
 
 require('coffee-script');
+var sass = require('node-sass');
 
 var express = require('express')
   , http = require('http')
@@ -20,6 +21,11 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(sass.middleware({
+      "src" : __dirname + '/assets/',
+      "dest" : __dirname + '/public/',
+      "debug" : true
+  }));
   app.use(express.static(path.join(__dirname, 'public')));
 });
 

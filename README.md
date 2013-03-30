@@ -10,11 +10,26 @@ The Node app I built for my Intelligent.ly class on Full Stack Javascript
   * You can delete the routes folder. We won't be using it.
 5. In the app directory run 'npm install' to install all dependencies (found in package.json)
 6. Start the server with 'npm start' and make sure you can go to http://localhost:3000/
-7. Open app.js and add 'require('coffee-script');' to the top (if you want to use Coffeescript)
-8. Run 'npm install coffee-script --save'
-  * The --save option tells npm to not only install coffee-script but to also add the installed version as a dependency to package.json
 
-## Step 1: Authentication
+## Step 1: Using Coffeescript
+1. Run 'npm install coffee-script --save'
+  * The --save option tells npm to not only install coffee-script but to also add the installed version as a dependency to package.json
+2. Open app.js and add 'require('coffee-script');' to the top 
+
+## Step 2: Using Sass
+1. Run 'npm install node-sass --save'
+2. Open app.js and add:
+  ```javascript
+  var sass = require('node-sass');
+  // In the app.configure block
+  app.use(sass.middleware({
+      "src" : __dirname + '/assets/',
+      "dest" : __dirname + '/public/',
+      "debug" : true
+  }));
+  ```
+
+## Step 3: Authentication
 1. You can delete the defined route handlers. We'll be adding our own.
   * Delete 'app.get("/", routes.index);')' in app.js
   * Delete the 'require(routes)' lines as well
